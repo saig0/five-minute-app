@@ -14,6 +14,8 @@ public class DasSpiel extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_das_spiel);
 
+		final int number = (int) Math.round(1 + 4 * Math.random());
+
 		View button = findViewById(R.id.button1);
 		button.setOnClickListener(new View.OnClickListener() {
 
@@ -23,12 +25,12 @@ public class DasSpiel extends Activity {
 				int guess = Integer.parseInt(numberView.getText().toString());
 
 				TextView descriptionView = (TextView) findViewById(R.id.textView1);
-
-				int number = (int) Math.round(5 * Math.random());
 				if (number == guess) {
 					descriptionView.setText("Richtig!");
+				} else if (number > guess) {
+					descriptionView.setText("Leider falsch! Zu niedrig");
 				} else {
-					descriptionView.setText("Leider falsch!");
+					descriptionView.setText("Leider falsch! Zu hoch");
 				}
 			}
 		});
